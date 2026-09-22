@@ -1,0 +1,15 @@
+{
+  "name": "gowtham-creator",
+  "private": true,
+  "type": "module",
+  "description": "GitHub profile README for gowtham-creator: generated skill tiles, banner and stats.",
+  "scripts": {
+    "icons": "node scripts/build-icons.mjs",
+    "banner": "node scripts/build-banner.mjs",
+    "stats": "node scripts/build-stats.mjs",
+    "build": "npm run icons && npm run banner && npm run stats"
+  },
+  "dependencies": {
+    "thesvg": "^3.3.8"
+  }
+}
