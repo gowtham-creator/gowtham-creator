@@ -35,6 +35,67 @@ const GROUPS = [
   ]},
 ];
 
+
+// Per-icon motion, chosen to suit each logo. Anything unlisted gently floats.
+const ANIM = {
+  // things that turn
+  react: "spin", kubernetes: "spin", openai: "spin-slow", claude: "spin-slow", "claude-code": "spin-slow",
+  n8n: "spin-slow", chroma: "spin-slow", "github-actions": "spin-slow", pandas: "tilt",
+  // things that glow or beat
+  redis: "pulse", firebase: "pulse", "google-gemini": "twinkle", mistral: "twinkle", supabase: "pulse",
+  pytorch: "flicker", tensorflow: "flicker", streamlit: "flicker", cloudflare: "pulse", vite: "zap",
+  // things that swing or sway
+  git: "swing", flask: "swing", jupyter: "orbit", mongodb: "sway", flutter: "swing", django: "sway",
+  langchain: "swing", figma: "tilt", framer: "zap",
+  // things that bounce
+  docker: "bob", python: "float", github: "bob", linux: "bob", ollama: "bob", postman: "bob",
+  "amazon-web-services": "smile", vercel: "rise", nextdotjs: "glow", threedotjs: "turn3d", gsap: "zap",
+  typescript: "type", javascript: "type", html5: "rise", css3: "rise", tailwindcss: "wave",
+  nodedotjs: "pulse", express: "slide", fastapi: "zap", nestjs: "sway", postgresql: "bob", mysql: "sway",
+  neo4j: "orbit", meta: "wave", llamaindex: "tilt", crewai: "bob", pinecone: "sway", langgraph: "orbit",
+  azure: "tilt", playwright: "sway", vitest: "zap", keras: "pulse", "scikit-learn": "orbit",
+  numpy: "turn3d", opencv: "spin-slow", "shadcn-ui": "tilt", dart: "slide", php: "float",
+};
+const KEYFRAMES = `
+.a{transform-box:fill-box;transform-origin:center}
+.spin{animation:spin 6s linear infinite}
+.spin-slow{animation:spin 14s linear infinite}
+.pulse{animation:pulse 2.2s ease-in-out infinite}
+.twinkle{animation:twinkle 2.6s ease-in-out infinite}
+.flicker{animation:flicker 1.8s ease-in-out infinite}
+.zap{animation:zap 2.8s ease-in-out infinite}
+.swing{transform-origin:50% 0%;animation:swing 2.6s ease-in-out infinite}
+.sway{transform-origin:50% 100%;animation:sway 3s ease-in-out infinite}
+.tilt{animation:tilt 3.2s ease-in-out infinite}
+.orbit{animation:orbit 4s ease-in-out infinite}
+.bob{animation:bob 2.4s ease-in-out infinite}
+.float{animation:float 3.2s ease-in-out infinite}
+.smile{animation:smile 3s ease-in-out infinite}
+.rise{animation:riseloop 2.8s ease-in-out infinite}
+.glow{animation:glow 2.4s ease-in-out infinite}
+.turn3d{animation:turn3d 4s ease-in-out infinite}
+.type{animation:type 3s steps(2,end) infinite}
+.wave{animation:wave 2.6s ease-in-out infinite}
+.slide{animation:slide 2.6s ease-in-out infinite}
+@keyframes spin{to{transform:rotate(360deg)}}
+@keyframes pulse{0%,100%{transform:scale(1)}50%{transform:scale(1.14)}}
+@keyframes twinkle{0%,100%{transform:scale(1) rotate(0);opacity:1}50%{transform:scale(.86) rotate(45deg);opacity:.75}}
+@keyframes flicker{0%,100%{transform:scaleY(1)}30%{transform:scaleY(1.08) scaleX(.96)}60%{transform:scaleY(.95) scaleX(1.03)}}
+@keyframes zap{0%,70%,100%{transform:none}75%{transform:translateX(-2px) skewX(-8deg)}82%{transform:translateX(2px) skewX(8deg)}90%{transform:none}}
+@keyframes swing{0%,100%{transform:rotate(-10deg)}50%{transform:rotate(10deg)}}
+@keyframes sway{0%,100%{transform:rotate(-6deg)}50%{transform:rotate(6deg)}}
+@keyframes tilt{0%,100%{transform:rotate(0)}25%{transform:rotate(-8deg)}75%{transform:rotate(8deg)}}
+@keyframes orbit{0%,100%{transform:translate(0,0)}25%{transform:translate(2px,-2px)}50%{transform:translate(0,-3px)}75%{transform:translate(-2px,-2px)}}
+@keyframes bob{0%,100%{transform:translateY(0)}50%{transform:translateY(-4px)}}
+@keyframes float{0%,100%{transform:translateY(1px) rotate(-2deg)}50%{transform:translateY(-3px) rotate(2deg)}}
+@keyframes smile{0%,100%{transform:scaleX(1)}50%{transform:scaleX(1.1) translateY(-1px)}}
+@keyframes riseloop{0%,100%{transform:translateY(2px)}50%{transform:translateY(-3px)}}
+@keyframes glow{0%,100%{opacity:1}50%{opacity:.55}}
+@keyframes turn3d{0%,100%{transform:scaleX(1)}50%{transform:scaleX(-1)}}
+@keyframes type{0%{opacity:1}50%{opacity:.6}}
+@keyframes wave{0%,100%{transform:skewX(0)}25%{transform:skewX(-10deg)}75%{transform:skewX(10deg)}}
+@keyframes slide{0%,100%{transform:translateX(-2px)}50%{transform:translateX(2px)}}`;
+
 // Layout
 const TILE = 64, ICON = 34, GAP_X = 18, LABEL_H = 24, ROW_GAP = 14, PER_ROW = 9, HEAD_H = 34, PAD = 4;
 const CELL = TILE + GAP_X;
@@ -109,7 +170,8 @@ async function render(group, theme) {
     parts.push(
       `<g class="t" style="animation-delay:${(i * 45).toFixed(0)}ms">` +
       `<rect x="${x0}" y="${y0}" width="${TILE}" height="${TILE}" rx="14" fill="${T.tile}" stroke="${T.stroke}"/>` +
-      nest(svg, x0 + o, y0 + o, ICON, tint, `${group.id}${i}`) +
+      `<g class="a ${ANIM[slug] || "float"}" style="animation-delay:-${((i * 0.37) % 3).toFixed(2)}s">` +
+      nest(svg, x0 + o, y0 + o, ICON, tint, `${group.id}${i}`) + `</g>` +
       `<text x="${x0 + TILE / 2}" y="${y0 + TILE + 16}" text-anchor="middle" class="l">${esc(label)}</text></g>`
     );
     i++;
@@ -123,6 +185,7 @@ async function render(group, theme) {
 .l{font:500 10.5px ${SANS};fill:${T.muted}}
 .t{animation:rise .5s cubic-bezier(.2,.7,.2,1) both}
 @keyframes rise{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+${KEYFRAMES}
 ${MOTION_GUARD}
 </style>
 <text x="${PAD}" y="18" class="h">$ ls ${esc(group.title)}</text>
