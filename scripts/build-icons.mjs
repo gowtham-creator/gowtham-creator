@@ -23,14 +23,14 @@ const GROUPS = [
   ]},
   { id: "backend", title: "~/skills/backend-data", items: [
     ["nodedotjs", "Node.js"], ["express", "Express"], ["fastapi", "FastAPI"], ["flask", "Flask"],
-    ["django", "Django"], ["nestjs", "NestJS"], ["php", "PHP"], ["redis", "Redis"],
+    ["django", "Django"], ["nestjs", "NestJS"], ["redis", "Redis"],
     ["postgresql", "PostgreSQL"], ["supabase", "Supabase"], ["mongodb", "MongoDB"], ["firebase", "Firebase"],
     ["neo4j", "Neo4j"], ["mysql", "MySQL"],
   ]},
   { id: "cloud", title: "~/skills/cloud-devops", items: [
     ["amazon-web-services", "AWS"], ["azure", "Azure"], ["vercel", "Vercel"], ["cloudflare", "Cloudflare"],
     ["docker", "Docker"], ["kubernetes", "Kubernetes"], ["github-actions", "GH Actions"], ["git", "Git"],
-    ["github", "GitHub"], ["linux", "Linux"], ["playwright", "Playwright"], ["vitest", "Vitest"],
+    ["github", "GitHub"], ["linux", "Linux"], ["playwright", "Playwright"],
     ["postman", "Postman"],
   ]},
 ];

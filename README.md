@@ -37,12 +37,12 @@
 
 <picture>
   <source media="(prefers-color-scheme: dark)" srcset="assets/skills/backend-dark.svg">
-  <img src="assets/skills/backend-light.svg" width="100%" alt="Backend and data: Node.js, Express, FastAPI, Flask, Django, NestJS, PHP, Redis, PostgreSQL, Supabase, MongoDB, Firebase, Neo4j, MySQL">
+  <img src="assets/skills/backend-light.svg" width="100%" alt="Backend and data: Node.js, Express, FastAPI, Flask, Django, NestJS, Redis, PostgreSQL, Supabase, MongoDB, Firebase, Neo4j, MySQL">
 </picture>
 
 <picture>
   <source media="(prefers-color-scheme: dark)" srcset="assets/skills/cloud-dark.svg">
-  <img src="assets/skills/cloud-light.svg" width="100%" alt="Cloud and DevOps: AWS, Azure, Vercel, Cloudflare, Docker, Kubernetes, GitHub Actions, Git, GitHub, Linux, Playwright, Vitest, Postman">
+  <img src="assets/skills/cloud-light.svg" width="100%" alt="Cloud and DevOps: AWS, Azure, Vercel, Cloudflare, Docker, Kubernetes, GitHub Actions, Git, GitHub, Linux, Playwright, Postman">
 </picture>
 
 ### `$ ls ~/projects --featured`
