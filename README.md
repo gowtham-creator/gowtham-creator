@@ -56,6 +56,13 @@
 | **[NXT School ID](https://github.com/gowtham-creator/nxt-schools-id)** | ID-card platform with a template designer, bulk Excel import, and print-ready CR80 and QR IDs. | Next.js 16 · Supabase RLS · Playwright |
 | **[Cubixso.com](https://www.cubixso.com)** | Immersive 3D agency site with a custom design system, scroll choreography, and device-adaptive WebGL with fallback. | Three.js · React Three Fiber · GSAP |
 
+> [!NOTE]
+> **Private client repositories.** Some of my strongest work is client-owned, so its source is kept private. That includes:
+> - **Nutri Greenz:** the storefront and operations console, the iOS/Android app (Expo + React Native, in progress), and the store's holding page.
+> - **AumicFlow:** the storytelling platform.
+>
+> The live product is at [nutrigreenz.farm](https://nutrigreenz.farm). Recruiters and hiring teams can ask for a code walkthrough or screen-share demo at the contact below.
+
 ### `$ git log --graph`
 
 <div align="center">
